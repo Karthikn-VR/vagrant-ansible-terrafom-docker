@@ -11,7 +11,10 @@ provider "docker" {
   host = "unix:///var/run/docker.sock"
 }
 
-
+resource "local_file" "example" {
+  content  = "Hello from Terraform!"
+  filename = "hello.txt"
+}
 
 resource "docker_image" "quiz_app" {
   name = "quiz-app:latest"
