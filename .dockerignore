@@ -1,0 +1,33 @@
+# Python cache & virtualenv
+
+**pycache**/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+venv/
+.env
+
+# Git & editor
+
+.git
+.gitignore
+.dockerignore
+*.swp
+*.log
+.idea/
+.vscode/
+
+# OS / misc
+
+.DS_Store
+Thumbs.db
+
+# Terraform / Ansible artifacts (if in repo)
+
+*.tfstate
+*.tfstate.backup
+.terraform/
+.ansible/
+.vagrant/
