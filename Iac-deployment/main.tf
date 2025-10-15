@@ -11,31 +11,18 @@ provider "docker" {
   host = "unix:///var/run/docker.sock"
 }
 
-
-
+# Pull a prebuilt image from Docker Hub (or any registry)
 resource "docker_image" "quiz_app" {
-  name = "quiz-app:latest"
-
-  build {
-    context    = "${path.module}/IaC-quiz"
-    dockerfile = "Dockerfile"
-  }
-
-  triggers = {
-   # app_code = filesha256("${path.module}/../Iac-quiz/app.py")
-   app_code = filesha256("${path.module}/IaC-quiz/app.py")
-
-  }
+  name         = var.image
   keep_locally = false
 }
 
-
-## running docker
+# Run the IaC Quiz app container
 resource "docker_container" "quiz_app" {
-  name  = "quiz_app"
-  image = docker_image.quiz_app.image_id
+  name     = "quiz_app"
+  image    = docker_image.quiz_app.image_id
   must_run = true
-  restart = "always"
+  restart  = "always"
 
   ports {
     internal = 8080
@@ -48,15 +35,3 @@ resource "docker_container" "quiz_app" {
   }
 }
 
-
-# variable "app_port" {
-#   description = "Port to expose quiz app"
-#   type        = number
-#   default     = 8080
-# }
-
-
-
-# data "external" "host_ip" {
-#   program = ["${path.module}/get_ip.sh"]
-# }

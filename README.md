@@ -1,6 +1,6 @@
 ---
 
-## 🚀 Value Added Course – DevOps Lab
+## 🚀 Value Added Course – DevOps Lab Excercise
 
 This project sets up a complete **DevOps lab environment** for students using **Vagrant, Docker, Terraform, Ansible, Flask, and GitHub Actions**.
 
